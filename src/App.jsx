@@ -54,6 +54,11 @@ function App() {
     }, 400)
   }
 
+  const eliminarGasto = id => {
+    const gastosActualizados = gastos.filter( gasto => gasto.id !== id )
+    setGastos(gastosActualizados)
+  }
+
   return (
     <div className={ modal ? 'fijar' : '' }>
       <Header 
@@ -67,9 +72,11 @@ function App() {
       {isValidPresupuesto && (
         <>
           <main>
-            <ListadoGatos 
+            <ListadoGatos
               gastos={gastos}
               setGastoEditar={setGastoEditar}
+              eliminarGasto={eliminarGasto}
+              
             />
           </main>
           <div className='nuevo-gasto'>
